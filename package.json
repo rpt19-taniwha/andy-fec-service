@@ -1,0 +1,19 @@
+{
+  "name": "andy-fec-service",
+  "version": "1.0.0",
+  "description": "andys service repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpt19-taniwha/andy-fec-service.git"
+  },
+  "author": "andy gala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpt19-taniwha/andy-fec-service/issues"
+  },
+  "homepage": "https://github.com/rpt19-taniwha/andy-fec-service#readme"
+}
