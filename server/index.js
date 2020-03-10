@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 //entry point for server to client
-app.use(express.static(path.join(__dirname, '../react-client/dist')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 //======================================
 //Routes and server logic
