@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 //Mongo/mongoose setup
 const mongoose = require("mongoose");
 const dbUrl = require("./database-mongo/database.config");
+const Product = require("./models/recProducts");
 
 const app = express();
 let port = process.env.PORT || 8080;
@@ -20,6 +21,16 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 //======================================
 //Routes and server logic
 //======================================
+
+app.get("/youmayalsolike", (req, res) => {
+  Product.findOne(req.body)
+    .then(data => {
+      res.send(data.recProducts);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+});
 
 //start server and db
 mongoose

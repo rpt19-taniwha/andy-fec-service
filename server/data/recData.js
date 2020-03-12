@@ -32,6 +32,4 @@ productData.forEach(product => {
   recData.push(recProduct);
 });
 
-console.log(recData);
-
 module.exports = { recData, productData };
