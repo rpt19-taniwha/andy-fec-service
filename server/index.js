@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 //======================================
 
 app.get("/youmayalsolike", (req, res) => {
-  Product.findOne(req.body)
+  Product.findOne(req.query)
     .then(data => {
       res.send(data.recProducts);
     })
