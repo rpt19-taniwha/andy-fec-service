@@ -1,14 +1,29 @@
 const productData = require("./productData");
+const faker = require("faker");
+const loremPicsum = require("lorem-picsum");
 
-const addRecs = productData => {
+const getRandomPrice = () => {
+  return `$${Math.floor(Math.random() * Math.floor(120))}.${Math.floor(
+    Math.random() * Math.floor(99)
+  )}`;
+};
+
+getRandomProduct = productNumber => {
+  let randomProductNumber;
+
+  while (true) {
+    let randomNum = Math.floor(Math.random() * Math.floor(productData.length));
+    randomProductNumber = productData[randomNum].productNumber;
+    if (randomProductNumber !== productNumber) return productData[randomNum];
+  }
+};
+
+const addRecs = productNumber => {
   let count = 0;
   const recArr = [];
 
   while (count < 5) {
-    recArr.push(
-      productData[Math.floor(Math.random() * Math.floor(productData.length))]
-        .productNumber
-    );
+    recArr.push(getRandomProduct(productNumber));
 
     count++;
   }
@@ -16,20 +31,41 @@ const addRecs = productData => {
   return recArr;
 };
 
-const recData = [];
-productData.forEach(product => {
-  const recProduct = {};
+/*
+{
+	productNumber: Number,
+	productName: String,
+	productPrice: String,
+	productPicture: String(Url),
+	sellerName: String,
+  shipping: Boolean,
+  productCatagory: String,
+	metaData: [String],
+	recProducts: [Product]
+}
+*/
 
-  product.price = `$${Math.floor(Math.random() * Math.floor(120))}.${Math.floor(
-    Math.random() * Math.floor(99)
-  )}`;
+const serviceDummyData = () => {
+  const recData = [];
 
-  product.shipping =
-    Math.floor(Math.random() * Math.floor(2)) === 0 ? true : false;
-  recProduct.productNumber = product.productNumber;
-  recProduct.recProducts = addRecs(productData);
+  productData.forEach(product => {
+    const serviceProduct = {};
+    serviceProduct.productNumber = product.productNumber;
+    serviceProduct.productName = product.productName;
+    serviceProduct.price = "$" + faker.commerce.price();
+    serviceProduct.picture = loremPicsum({ width: 200 });
+    serviceProduct.sellerName = faker.internet.userName();
+    serviceProduct.shipping = faker.random.boolean();
+    serviceProduct.catagory = product.productCategory;
+    serviceProduct.metaData = product.versions.style[0].metaData;
+    serviceProduct.recProducts = addRecs(product.productNumber);
 
-  recData.push(recProduct);
-});
+    recData.push(serviceProduct);
+  });
 
-module.exports = { recData, productData };
+  return recData;
+};
+
+console.log(serviceDummyData());
+
+module.exports = { serviceDummyData };
