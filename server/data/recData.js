@@ -2,12 +2,6 @@ const productData = require("./productData");
 const faker = require("faker");
 const loremPicsum = require("lorem-picsum");
 
-const getRandomPrice = () => {
-  return `$${Math.floor(Math.random() * Math.floor(120))}.${Math.floor(
-    Math.random() * Math.floor(99)
-  )}`;
-};
-
 getRandomProduct = productNumber => {
   let randomProductNumber;
 
@@ -31,20 +25,6 @@ const addRecs = productNumber => {
   return recArr;
 };
 
-/*
-{
-	productNumber: Number,
-	productName: String,
-	productPrice: String,
-	productPicture: String(Url),
-	sellerName: String,
-  shipping: Boolean,
-  productCatagory: String,
-	metaData: [String],
-	recProducts: [Product]
-}
-*/
-
 const serviceDummyData = () => {
   const recData = [];
 
@@ -66,6 +46,19 @@ const serviceDummyData = () => {
   return recData;
 };
 
-console.log(serviceDummyData());
+module.exports = serviceDummyData();
 
-module.exports = { serviceDummyData };
+/*
+Prduct Schema
+{
+	productNumber: Number,
+	productName: String,
+	productPrice: String,
+	productPicture: String(Url),
+	sellerName: String,
+  shipping: Boolean,
+  productCatagory: String,
+	metaData: [String],
+	recProducts: [Product]
+}
+*/
