@@ -18,23 +18,20 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 //API Endpoints
 //=========================================
 app.get("/youmayalsolike", (req, res) => {
+  console.log(req.query);
   Product.findOne(req.query)
     .then(data => {
-      res.send(data.recProducts);
+      res.send(data);
     })
     .catch(err => {
       res.status(500).send(err);
     });
 });
 
-//Seed database on startup
-const seedData = require("./data/seedData");
-
 //Start server and db
 mongoose
   .connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(client => {
-    console.log(client.db);
     app.listen(port, () => console.log(`Listening on ${port}...`));
   })
   .catch(err => console.log(err));
