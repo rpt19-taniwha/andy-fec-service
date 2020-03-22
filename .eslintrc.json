@@ -17,5 +17,7 @@
     "ecmaVersion": 2018
   },
   "plugins": ["react", "prettier"],
-  "rules": {}
+  "rules": {
+    "no-unused-vars": "warn"
+  }
 }
