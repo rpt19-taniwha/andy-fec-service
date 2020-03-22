@@ -19,10 +19,10 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/youmayalsolike', (req, res) => {
   Product.findOne(req.query)
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send(err);
     });
 });
@@ -31,8 +31,8 @@ app.get('/youmayalsolike', (req, res) => {
 mongoose
   .connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => {
-    app.listen(port);
+    app.listen(port, () => console.log(`Listening on port: ${port}`));
   })
-  .catch(err => {
-    throw err;
+  .catch((err) => {
+    console.log(err);
   });

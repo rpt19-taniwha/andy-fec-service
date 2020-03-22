@@ -1,25 +1,30 @@
-const productData = require("./productData");
-const faker = require("faker");
-const loremPicsum = require("lorem-picsum");
+const loremPicsum = require('lorem-picsum');
+const faker = require('faker');
+const productData = require('./productData');
 
-getRandomProduct = productNumber => {
+const getRandomProduct = (productNumber) => {
   let randomProductNumber;
+  const bool = true;
 
-  while (true) {
-    let randomNum = Math.floor(Math.random() * Math.floor(productData.length));
+  while (bool) {
+    const randomNum = Math.floor(
+      Math.random() * Math.floor(productData.length)
+    );
     randomProductNumber = productData[randomNum].productNumber;
     if (randomProductNumber !== productNumber) return productData[randomNum];
   }
+
+  return null;
 };
 
-const addRecs = productNumber => {
+const addRecs = (productNumber) => {
   let count = 0;
   const recArr = [];
 
   while (count < 5) {
     recArr.push(getRandomProduct(productNumber));
 
-    count++;
+    count += 1;
   }
 
   return recArr;
@@ -28,11 +33,11 @@ const addRecs = productNumber => {
 const serviceDummyData = () => {
   const recData = [];
 
-  productData.forEach(product => {
+  productData.forEach((product) => {
     const serviceProduct = {};
     serviceProduct.productNumber = product.productNumber;
     serviceProduct.productName = product.productName;
-    serviceProduct.price = "$" + faker.commerce.price();
+    serviceProduct.price = `$ ${faker.commerce.price()}`;
     serviceProduct.picture = loremPicsum({ width: 200 });
     serviceProduct.sellerName = faker.internet.userName();
     serviceProduct.shipping = faker.random.boolean();
