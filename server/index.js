@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
+// eslint-disable-next-line node/no-unpublished-require
 const dbUrl = require('./database-mongo/database.config');
 const Product = require('./models/recProducts');
 
