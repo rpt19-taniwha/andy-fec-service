@@ -1,17 +1,23 @@
+/* eslint-disable no-param-reassign */
 const loremPicsum = require('lorem-picsum');
 const faker = require('faker');
 const productData = require('./productData');
 
-const getRandomProduct = (productNumber) => {
+//  global variable that is exported
+const serviceProducts = [];
+
+// helpers
+const getRandomServiceProduct = (productNumber) => {
   let randomProductNumber;
   const bool = true;
 
   while (bool) {
     const randomNum = Math.floor(
-      Math.random() * Math.floor(productData.length)
+      Math.random() * Math.floor(serviceProducts.length)
     );
-    randomProductNumber = productData[randomNum].productNumber;
-    if (randomProductNumber !== productNumber) return productData[randomNum];
+    randomProductNumber = serviceProducts[randomNum].productNumber;
+    if (randomProductNumber !== productNumber)
+      return serviceProducts[randomNum];
   }
 
   return null;
@@ -22,17 +28,15 @@ const addRecs = (productNumber) => {
   const recArr = [];
 
   while (count < 5) {
-    recArr.push(getRandomProduct(productNumber));
-
+    recArr.push(getRandomServiceProduct(productNumber));
     count += 1;
   }
 
   return recArr;
 };
 
-const serviceDummyData = () => {
-  const recData = [];
-
+// convert product data to service data
+(() => {
   productData.forEach((product) => {
     const serviceProduct = {};
     serviceProduct.productNumber = product.productNumber;
@@ -43,27 +47,14 @@ const serviceDummyData = () => {
     serviceProduct.shipping = faker.random.boolean();
     serviceProduct.catagory = product.productCategory;
     serviceProduct.metaData = product.versions.style[0].metaData;
-    serviceProduct.recProducts = addRecs(product.productNumber);
-
-    recData.push(serviceProduct);
+    serviceProducts.push(serviceProduct);
   });
 
-  return recData;
-};
+  serviceProducts.forEach((serviceProduct) => {
+    serviceProduct.recProducts = addRecs(serviceProduct.productNumber);
+  });
 
-module.exports = serviceDummyData();
+  return null;
+})();
 
-/*
-Prduct Schema
-{
-	productNumber: Number,
-	productName: String,
-	productPrice: String,
-	productPicture: String(Url),
-	sellerName: String,
-  shipping: Boolean,
-  productCatagory: String,
-	metaData: [String],
-	recProducts: [Product]
-}
-*/
+module.exports = serviceProducts;

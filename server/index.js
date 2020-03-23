@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 // eslint-disable-next-line node/no-unpublished-require
 const dbUrl = require('./database-mongo/database.config');
-const Product = require('./models/recProducts');
+const Product = require('./models/Product');
 
 const app = express();
 const port = process.env.PORT || 8080;
