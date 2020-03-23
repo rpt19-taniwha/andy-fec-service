@@ -6,7 +6,8 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
-    "seed": "node server/data/seedData.js"
+    "seed": "node server/data/seedData.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "jest": "^25.1.0",
     "minimist": ">=1.2.2",
     "nodemon": "^2.0.2",
     "prettier": "^2.0.1",
