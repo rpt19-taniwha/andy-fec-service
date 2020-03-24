@@ -12,12 +12,22 @@ const getRandomServiceProduct = (productNumber) => {
   const bool = true;
 
   while (bool) {
+    const recItem = {};
     const randomNum = Math.floor(
       Math.random() * Math.floor(serviceProducts.length)
     );
     randomProductNumber = serviceProducts[randomNum].productNumber;
-    if (randomProductNumber !== productNumber)
-      return serviceProducts[randomNum];
+    if (randomProductNumber !== productNumber) {
+      recItem.productNumber = serviceProducts[randomNum].productNumber;
+      recItem.productName = serviceProducts[randomNum].productName;
+      recItem.price = serviceProducts[randomNum].price;
+      recItem.picture = serviceProducts[randomNum].picture;
+      recItem.sellerName = serviceProducts[randomNum].sellerName;
+      recItem.shipping = serviceProducts[randomNum].shipping;
+      recItem.catagory = serviceProducts[randomNum].catagory;
+      recItem.metaData = serviceProducts[randomNum].metaData;
+      return recItem;
+    }
   }
 
   return null;
@@ -56,5 +66,7 @@ const addRecs = (productNumber) => {
 
   return null;
 })();
+
+// console.log(serviceProducts[0].recProducts);
 
 module.exports = serviceProducts;

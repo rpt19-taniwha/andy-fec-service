@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const data = require('./serviceData');
-const Product = require('../models/Product');
+
+const Product = require('../../models/Product');
 // eslint-disable-next-line node/no-unpublished-require
-const dbUrl = require('../database-mongo/database.config');
+const dbUrl = require('../config/database.config');
 
 mongoose.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
