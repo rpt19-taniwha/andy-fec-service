@@ -25,11 +25,11 @@ db.once('open', () => {
           if (err) {
             console.log('error', err);
           } else {
-            console.log(products);
+            console.log('Database created!');
+            db.close();
           }
         });
       }
-      console.log('Database created!');
     })
     .catch((err) => {
       console.log(err);
