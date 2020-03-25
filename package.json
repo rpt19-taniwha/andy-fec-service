@@ -7,7 +7,7 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/server.js",
     "seed": "node server/database-mongo/data/seedData.js",
-    "test": "jest --runInBand --detectOpenHandles"
+    "test": "jest --runInBand --detectOpenHandles --verbose"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,8 @@
     "mongodb": "^3.5.4",
     "mongoose": "^5.9.4",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
