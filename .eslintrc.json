@@ -23,5 +23,12 @@
     "no-unused-vars": "warn",
     "no-console": "off",
     "arrow-parens": 2
-  }
+  },
+  "node/no-unsupported-features/es-syntax": [
+    "error",
+    {
+      "version": ">=8.0.0",
+      "ignores": []
+    }
+  ]
 }
