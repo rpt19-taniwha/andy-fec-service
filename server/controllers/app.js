@@ -14,10 +14,10 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 //  API Endpoints
 
-app.get('/youmayalsolike/:productId', (req, res) => {
-  const productId = parseInt(req.params.productId, 10);
+app.get('/youmayalsolike/:productNumber', (req, res) => {
+  const productNumber = parseInt(req.params.productNumber, 10);
 
-  Product.findOne({ productNumber: productId })
+  Product.findOne({ productNumber })
     .then((data) => {
       res.send(data);
     })
