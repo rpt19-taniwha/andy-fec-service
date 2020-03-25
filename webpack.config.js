@@ -31,5 +31,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './client/src/index.html'
     })
-  ]
+  ],
+  resolve: {
+    extensions: ['.js', '.jsx', '.css'],
+    modules: ['node_modules']
+  }
 };
