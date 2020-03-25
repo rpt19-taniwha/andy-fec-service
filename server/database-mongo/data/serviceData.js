@@ -67,6 +67,4 @@ const addRecs = (productNumber) => {
   return null;
 })();
 
-// console.log(serviceProducts[0].recProducts);
-
 module.exports = serviceProducts;
