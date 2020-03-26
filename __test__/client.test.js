@@ -12,8 +12,6 @@ Enzyme.configure({
 describe('Render App component', () => {
   it('Should include 1 div with "Hello world!!!" text', () => {
     const wrapper = shallow(<App />);
-
-    console.log(wrapper);
     expect(wrapper.text()).toBe('Hello world!!!');
   });
 });
