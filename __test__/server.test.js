@@ -8,6 +8,7 @@ describe('Server endpoint /youmayalsolike', () => {
 
   it('GET /youmayalsolike/:productNumber should return 200', (done) => {
     request(requestMethodAndUrl, (err, response) => {
+      console.log(response.statusCode);
       if (err) {
         throw err;
       } else {
