@@ -4,8 +4,12 @@ import ReactDOM from 'react-dom';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      ProductsData = []
+    };
   }
+
+
 
   render() {
     return <div>Hello world!!!</div>;
