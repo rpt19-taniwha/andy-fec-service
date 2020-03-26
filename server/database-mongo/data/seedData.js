@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
-const data = require('./recData');
-const Product = require('../models/recProducts');
-const dbUrl = require('../database-mongo/database.config');
+const data = require('./serviceData');
+
+const Product = require('../../models/Product');
+// eslint-disable-next-line node/no-unpublished-require
+const dbUrl = require('../config/database.config');
 
 mongoose.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
@@ -23,11 +25,11 @@ db.once('open', () => {
           if (err) {
             console.log('error', err);
           } else {
-            console.log(products);
+            console.log('Database created!');
+            db.close();
           }
         });
       }
-      console.log('Database created!');
     })
     .catch((err) => {
       console.log(err);
