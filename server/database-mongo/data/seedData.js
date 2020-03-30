@@ -1,37 +1,24 @@
 const mongoose = require('mongoose');
 const data = require('./serviceData');
-
 const Product = require('../../models/Product');
+
 // eslint-disable-next-line node/no-unpublished-require
 const dbUrl = require('../config/database.config');
+const localDbUrl = 'mongodb://localhost/recProducts';
+const url = dbUrl || localDbUrl;
 
-mongoose.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true });
-const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-
-db.on('open', () => {
-  db.dropDatabase(() => {
-    console.log('collection dropped');
-  });
+mongoose.connect(url, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
 });
 
-db.once('open', () => {
-  console.log('db connected...');
-  Product.countDocuments({})
-    .then((docs) => {
-      if (docs === 0) {
-        Product.create(data, (err, products) => {
-          if (err) {
-            console.log('error', err);
-          } else {
-            console.log('Database created!');
-            db.close();
-          }
-        });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+mongoose.connection.collections['products'].drop();
+
+Product.insertMany(data, function (error, docs) {
+  if (error) {
+    console.log('Error seeding database');
+  } else {
+    console.log('Successfully seeded database');
+    mongoose.connection.close();
+  }
 });
