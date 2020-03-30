@@ -19,5 +19,6 @@ Product.insertMany(data, function (error, docs) {
     console.log('Error seeding database');
   } else {
     console.log('Successfully seeded database');
+    mongoose.connection.close();
   }
 });
