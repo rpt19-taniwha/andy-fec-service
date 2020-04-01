@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 //  API Endpoints
 
-app.get('/youmayalsolike/:productNumber', (req, res) => {
+app.get('/listing/:productNumber', (req, res) => {
   const productNumber = parseInt(req.params.productNumber, 10);
 
   Product.findOne({ productNumber })
