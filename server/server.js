@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 // eslint-disable-next-line node/no-unpublished-require
 const app = require('./controllers/app');
-const url = 'mongodb+srv://root:root@recservicedata-3vond.mongodb.net/test?retryWrites=true&w=majority';
+const url = 'mongodb+srv://root:root@recservicedata-3vond.mongodb.net/recProducts?retryWrites=true&w=majority';
 
 const port = process.env.PORT || 8080;
 

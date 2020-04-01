@@ -13,7 +13,7 @@ class App extends React.Component {
   componentDidMount() {
     const productNum = window.location.pathname.split('/')[2] || 3394;
 
-    axios(`http://localhost:8080/listing/${productNum}`).then(
+    axios(`http://localhost:8080/youmayalsolike/${productNum}`).then(
       (serverData) => {
         this.setState({
           productsData: serverData.data
