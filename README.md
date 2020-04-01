@@ -9,13 +9,6 @@ Install packages
 ```bash
 npm install
 ```
-
-Seed database
-
-```bash
-npm run seed
-```
-
 Start app
 
 ```bash
