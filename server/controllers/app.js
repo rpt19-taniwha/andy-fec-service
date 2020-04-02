@@ -17,6 +17,12 @@ app.use(express.static(path.join(__dirname, '../../client/dist')));
 //  API Endpoints
 
 app.get('/listing/:productNumber', (req, res) => {
+  res.sendFile('index.html', {
+    root: path.join(__dirname, '../../client/dist'),
+  });
+});
+
+app.get('/products/:productNumber', (req, res) => {
   const productNumber = parseInt(req.params.productNumber, 10);
 
   Product.findOne({ productNumber })
