@@ -30,7 +30,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="products">
         <Product data={this.getProduct(0)}></Product>
         <Product data={this.getProduct(1)}></Product>
         <Product data={this.getProduct(2)}></Product>
