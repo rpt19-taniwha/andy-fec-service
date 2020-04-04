@@ -30,12 +30,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="products">
-        <Product data={this.getProduct(0)}></Product>
-        <Product data={this.getProduct(1)}></Product>
-        <Product data={this.getProduct(2)}></Product>
-        <Product data={this.getProduct(3)}></Product>
-        <Product data={this.getProduct(4)}></Product>
+      <div className="service">
+        <div className="title">You may also like</div>
+        <div className="products">
+          <Product data={this.getProduct(0)}></Product>
+          <Product data={this.getProduct(1)}></Product>
+          <Product data={this.getProduct(2)}></Product>
+          <Product data={this.getProduct(3)}></Product>
+          <Product data={this.getProduct(4)}></Product>
+          <Product data={this.getProduct(5)}></Product>
+        </div>
       </div>
     );
   }

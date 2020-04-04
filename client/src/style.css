@@ -1,3 +1,86 @@
-.products {
-  border: 1px solid black;
+*{
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+/*
+=====================
+Products
+=====================
+*/
+.products{
+  display: flex;
+  justify-content: center;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  flex: 1;
+  font-size: 32px;
+  font-family: serif;
+  font-weight: 300;
+  line-height: 36px;
+  text-align: left;
+  display: flex;
+}
+
+/*
+=====================
+Card
+=====================
+*/
+.card {
+  max-height: 278px;
+  max-width: 260px;
+  margin: 1px;
+  text-align: center;
+  font-family: arial;
+  font-weight: 13px;
+  border-radius: 0px;
+  transition: all .25s;
+  box-shadow: none;
+}
+
+.card:hover {
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*
+=====================
+Content
+=====================
+*/
+.content {
+  text-align: left;
+  margin: 0px 9px;
+}
+
+p {
+  margin:2px;
+}
+
+.seller-name {
+  color:#595959;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  word-spacing: 0px;
+}
+
+.shipping {
+  color: #595959;
+}
+
+img{
+  width:92%;
+  margin-top: 10px;
+  border-radius: 1px;
+}
+
