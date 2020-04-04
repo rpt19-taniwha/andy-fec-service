@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const data = require('./serviceData');
 const Product = require('../../models/Product');
-
-// eslint-disable-next-line node/no-unpublished-require
-const url = 'mongodb+srv://root:root@recservicedata-3vond.mongodb.net/recProducts?retryWrites=true&w=majority';
+const url = require('../config/database.config')
 
 mongoose.connect(url, {
   useUnifiedTopology: true,

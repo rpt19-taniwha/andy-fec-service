@@ -37,7 +37,7 @@ const addRecs = (productNumber) => {
   let count = 0;
   const recArr = [];
 
-  while (count < 5) {
+  while (count < 6) {
     recArr.push(getRandomServiceProduct(productNumber));
     count += 1;
   }
@@ -47,12 +47,12 @@ const addRecs = (productNumber) => {
 
 // convert product data to service data
 (() => {
-  productData.forEach((product) => {
+  productData.forEach((product, i) => {
     const serviceProduct = {};
     serviceProduct.productNumber = product.productNumber;
     serviceProduct.productName = product.productName;
-    serviceProduct.price = `$ ${faker.commerce.price()}`;
-    serviceProduct.picture = loremPicsum({ width: 200 });
+    serviceProduct.price = `$${faker.commerce.price()}`;
+    serviceProduct.picture = `https://i.picsum.photos/id/${i}/220/165.jpg`
     serviceProduct.sellerName = faker.internet.userName();
     serviceProduct.shipping = faker.random.boolean();
     serviceProduct.catagory = product.productCategory;
@@ -67,4 +67,5 @@ const addRecs = (productNumber) => {
   return null;
 })();
 
+console.log(serviceProducts);
 module.exports = serviceProducts;
