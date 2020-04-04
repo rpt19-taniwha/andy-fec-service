@@ -3,6 +3,7 @@ const path = require('path');
 
 const bodyParser = require('body-parser');
 const Product = require('../models/Product');
+const cacheData = require('../database-mongo/data/sampleData');
 
 const cors = require('cors');
 const app = express();
@@ -25,13 +26,16 @@ app.get('/listing/:productNumber', (req, res) => {
 app.get('/products/:productNumber', (req, res) => {
   const productNumber = parseInt(req.params.productNumber, 10);
 
-  Product.findOne({ productNumber })
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send(err);
-    });
+  res.send(JSON.stringify(cacheData))
+
+  // Product.findOne({ productNumber })
+  //   .then((data) => {
+  //     console.log('from line 105')
+  //     res.send(data);
+  //   })
+  //   .catch((err) => {
+  //     res.status(500).send(err);
+  //   });
 });
 
 module.exports = app;
