@@ -30,15 +30,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="service">
-        <div className="title">You may also like</div>
-        <div className="products">
-          <Product data={this.getProduct(0)}></Product>
-          <Product data={this.getProduct(1)}></Product>
-          <Product data={this.getProduct(2)}></Product>
-          <Product data={this.getProduct(3)}></Product>
-          <Product data={this.getProduct(4)}></Product>
-          <Product data={this.getProduct(5)}></Product>
+      <div className="wrapper">
+        <div className="inner-wrapper">
+          <div className="title">
+            <div className="title-text">You may also like</div>
+            <div className="shop-more">Shop more similar items</div>
+          </div>
+          <div className="products">
+            <Product data={this.getProduct(0)}></Product>
+            <Product data={this.getProduct(1)}></Product>
+            <Product data={this.getProduct(2)}></Product>
+            <Product data={this.getProduct(3)}></Product>
+            <Product data={this.getProduct(4)}></Product>
+            <Product data={this.getProduct(5)}></Product>
+          </div>
         </div>
       </div>
     );

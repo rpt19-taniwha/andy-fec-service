@@ -9,22 +9,42 @@ Products
 */
 .products{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-.service {
+.wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.inner-wrapper {
+  width: 75%;
 }
 
 .title {
-  flex: 1;
+  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid blue;
+  margin: 0 10px 0 10px;
   font-size: 32px;
   font-family: serif;
   font-weight: 300;
   line-height: 36px;
-  text-align: left;
+
+}
+
+.title-text {
   display: flex;
+  justify-content: flex-start;
+}
+
+.shop-more {
+  font-size: 13px;
+  font-weight: 700px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /*
