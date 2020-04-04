@@ -34,7 +34,7 @@ class App extends React.Component {
         <div className="inner-wrapper">
           <div className="title">
             <div className="title-text">You may also like</div>
-            <div className="shop-more">Shop more similar items</div>
+            <div className="shop-more">Shop more similar items <i className='fas fa-arrow-right arrow'></i></div>
           </div>
           <div className="products">
             <Product data={this.getProduct(0)}></Product>
