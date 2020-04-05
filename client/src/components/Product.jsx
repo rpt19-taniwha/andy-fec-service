@@ -28,8 +28,8 @@ const Product = (props) => {
   const image = imageExists(picture);
 
   return (
-    <div className="card">
-      <img src={image} alt="picture"></img>
+    <div className="cards">
+      <img className="rec-product-pic" src={image} alt="picture"></img>
       <div className="content">
         <p>{productName}</p>
         <p className="seller-name">{sellerName}</p>

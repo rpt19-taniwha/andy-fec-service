@@ -10,6 +10,7 @@ Products
 #youmayalsolike .products{
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 #youmayalsolike .wrapper {
@@ -26,7 +27,7 @@ Products
   text-align: right;
   display: flex;
   justify-content: space-between;
-  margin: 0 10px 0 10px;
+  margin: 0 10px 10px 10px;
   font-size: 32px;
   font-family: serif;
   font-weight: 300;
@@ -62,7 +63,7 @@ Products
 Card
 =====================
 */
-#youmayalsolike .card {
+#youmayalsolike .cards {
   max-height: 278px;
   max-width: 260px;
   margin: 1px;
@@ -74,7 +75,7 @@ Card
   box-shadow: none;
 }
 
-#youmayalsolike .card:hover {
+#youmayalsolike .cards:hover {
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -87,6 +88,7 @@ Content
 #youmayalsolike .content {
   text-align: left;
   margin: 0px 9px;
+  font-size: 13px;
 }
 
 #youmayalsolike p {
@@ -108,7 +110,7 @@ Content
   color: #595959;
 }
 
-#youmayalsolike img{
+#youmayalsolike .rec-product-pic {
   width:92%;
   margin-top: 10px;
   border-radius: 1px;
