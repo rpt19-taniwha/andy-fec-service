@@ -13,7 +13,7 @@ class App extends React.Component {
   componentDidMount() {
     const productNum = window.location.pathname.split('/')[2];
 
-    axios(`http://localhost:8080/listing/${productNum}`).then(
+    axios(`http://localhost:8080/products/${productNum}`).then(
       (serverData) => {
         this.setState({
           productsData: serverData.data
@@ -30,12 +30,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Product data={this.getProduct(0)}></Product>
-        <Product data={this.getProduct(1)}></Product>
-        <Product data={this.getProduct(2)}></Product>
-        <Product data={this.getProduct(3)}></Product>
-        <Product data={this.getProduct(4)}></Product>
+      <div className="wrapper">
+        <div className="inner-wrapper">
+          <div className="title">
+            <div className="title-text">You may also like</div>
+            <div className="shop-more">Shop more similar items <i className='fas fa-arrow-right arrow'></i></div>
+          </div>
+          <div className="products">
+            <Product data={this.getProduct(0)}></Product>
+            <Product data={this.getProduct(1)}></Product>
+            <Product data={this.getProduct(2)}></Product>
+            <Product data={this.getProduct(3)}></Product>
+            <Product data={this.getProduct(4)}></Product>
+            <Product data={this.getProduct(5)}></Product>
+          </div>
+        </div>
       </div>
     );
   }
