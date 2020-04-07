@@ -30,7 +30,6 @@ app.get('/products/:productNumber', (req, res) => {
 
   Product.findOne({ productNumber })
     .then((data) => {
-      console.log('from line 105')
       res.send(data);
     })
     .catch((err) => {
