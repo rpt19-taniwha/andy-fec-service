@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = require('./controllers/app');
 const url = 'mongodb+srv://root:root@recservicedata-3vond.mongodb.net/recProducts?retryWrites=true&w=majority';
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 
 mongoose.connect(url, {
   useUnifiedTopology: true,
