@@ -17,10 +17,7 @@ const Product = (props) => {
     let newUrl = `https://i.picsum.photos/id/${Math.floor(Math.random() * 300 + 200)}/220/165.jpg`
     let image = new Image();
     image.src = url;
-    if (!image.complete) {
-      return newUrl;
-    }
-    else if (image.height === 0) {
+    if (image.height === 0) {
       return newUrl;
     }
     return url;
