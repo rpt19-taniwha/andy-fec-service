@@ -1,5 +1,5 @@
 #youmayalsolike *{
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Graphik Webfont","Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
 }
 
 /*
@@ -29,17 +29,17 @@ Products
   justify-content: space-between;
   margin: 0 10px 10px 10px;
   font-size: 32px;
-  font-family: serif;
-  font-weight: 300;
   line-height: 36px;
+  color: #222222;
+  font-family: "Guardian-EgypTT",serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
 
 #youmayalsolike .arrow {
   font-size: 13px;
-  margin: 8% 0 0;
   margin-left: 15px;
-  transition-duration: 250ms;
-  transition-property: all;
+  margin-top: 1px;
 }
 
 #youmayalsolike .arrow:hover {
@@ -53,7 +53,8 @@ Products
 
 #youmayalsolike .shop-more {
   font-size: 13px;
-  font-weight: 700px;
+  font-weight: bold;
+  color: inherit;
   display: flex;
   justify-content: flex-end;
 }
