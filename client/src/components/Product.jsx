@@ -22,7 +22,7 @@ const Product = (props) => {
   //   }
   //   return url;
   // }
-  // const image = imageExists(picture);
+  // const image = imageExists(picture)
 
   return (
     <div className="cards">
