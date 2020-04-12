@@ -13,7 +13,7 @@ class App extends React.Component {
   componentDidMount() {
     const productNum = document.location.pathname.split('/')[2];
 
-    axios.get(`http://ec2-54-183-253-155.us-west-1.compute.amazonaws.com:8081/products/${productNum}`).then(
+    axios.get(`http://ec2-18-144-87-34.us-west-1.compute.amazonaws.com:8081/products/${productNum}`).then(
       (serverData) => {
         this.setState({
           productsData: serverData.data
