@@ -1,14 +1,13 @@
 import React from 'react';
-import axios from 'axios';
 
 const Product = (props) => {
+
   const {
     productName,
     price,
     picture,
     sellerName,
-    shipping,
-    catagory
+    shipping
   } = props.data;
 
   return (

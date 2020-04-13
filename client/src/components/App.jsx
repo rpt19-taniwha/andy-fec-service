@@ -6,40 +6,63 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productsData: ''
+      productsData: [],
+      images: []
     };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     const productNum = document.location.pathname.split('/')[2];
 
-    axios.get(`http://ec2-18-144-87-34.us-west-1.compute.amazonaws.com:8081/products/${productNum}`)
-      .then(({ data }) => {
-        let productNums = data.recProducts.map((product => product.productNumber));
-        return [data, productNums];
-      })
-      .then(data => {
-        for (let i = 0; i < data[1].length; i++) {
-          axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${data[1][i]}`)
-            .then(pic => {
-              data[0].recProducts[i].picture = pic.data.imageUrls[0];
-            });
-        }
-
-        return data[0]
-      })
-      .then(data => {
-        console.log(data)
+    this.getProductData(productNum)
+      .then(product => {
         this.setState({
-          productsData: data
+          productsData: product.data
         })
+
+        const productNums = product.data.recProducts.map((product => product.productNumber));
+        return productNums
+      })
+      .then(productNums => {
+        return this.getImageData(productNums)
+      })
+      .then(imageUrls => {
+        this.setState({
+          images: imageUrls
+        })
+      })
+      .catch(err => {
+        console.log('error', err)
       })
   }
 
-  getProduct(idx) {
+  getProductData = (productNum) => {
+    return axios.get(`http://ec2-18-144-87-34.us-west-1.compute.amazonaws.com:8081/products/${productNum}`)
+  }
+
+  getImageData = (productNums) => {
+    const imageUrls = [];
+
+    for (let num of productNums) {
+      axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${num}`)
+        .then(images => {
+          imageUrls.push(images.data.imageUrls[0]);
+        })
+    }
+
+    return imageUrls;
+  }
+
+  getProduct = (idx) => {
     return this.state.productsData.recProducts === undefined
       ? ""
       : this.state.productsData.recProducts[idx];
+  }
+
+  getImage = (idx) => {
+    return this.state.images[idx] === undefined
+      ? ""
+      : this.state.images[idx];
   }
 
   render() {
@@ -51,12 +74,12 @@ class App extends React.Component {
             <div className="shop-more">Shop more similar items<div className="arrow">&#8680;</div></div>
           </div>
           <div className="products">
-            <Product data={this.getProduct(0)}></Product>
-            <Product data={this.getProduct(1)}></Product>
-            <Product data={this.getProduct(2)}></Product>
-            <Product data={this.getProduct(3)}></Product>
-            <Product data={this.getProduct(4)}></Product>
-            <Product data={this.getProduct(5)}></Product>
+            <Product data={this.getProduct(0)} image={this.getImage(0)}></Product>
+            <Product data={this.getProduct(1)} image={this.getImage(1)}></Product>
+            <Product data={this.getProduct(2)} image={this.getImage(2)}></Product>
+            <Product data={this.getProduct(3)} image={this.getImage(3)}></Product>
+            <Product data={this.getProduct(4)} image={this.getImage(4)}></Product>
+            <Product data={this.getProduct(5)} image={this.getImage(5)}></Product>
           </div>
         </div>
       </div>
