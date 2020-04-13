@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const Product = (props) => {
   const {
@@ -9,20 +10,6 @@ const Product = (props) => {
     shipping,
     catagory
   } = props.data;
-
-
-  // Temp helper func to make sure if lorem picsum link is broken we still get a image to render
-  // Need to eventually get image url from image service
-  // const imageExists = (url) => {
-  //   let newUrl = `https://i.picsum.photos/id/${Math.floor(Math.random() * 300 + 200)}/220/165.jpg`
-  //   let image = new Image();
-  //   image.src = url;
-  //   if (image.height === 0) {
-  //     return newUrl;
-  //   }
-  //   return url;
-  // }
-  // const image = imageExists(picture)
 
   return (
     <div className="cards">

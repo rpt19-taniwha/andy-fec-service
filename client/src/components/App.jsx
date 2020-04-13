@@ -13,18 +13,32 @@ class App extends React.Component {
   componentDidMount() {
     const productNum = document.location.pathname.split('/')[2];
 
-    axios.get(`http://ec2-18-144-87-34.us-west-1.compute.amazonaws.com:8081/products/${productNum}`).then(
-      (serverData) => {
+    axios.get(`http://ec2-18-144-87-34.us-west-1.compute.amazonaws.com:8081/products/${productNum}`)
+      .then(({ data }) => {
+        let productNums = data.recProducts.map((product => product.productNumber));
+        return [data, productNums];
+      })
+      .then(data => {
+        for (let i = 0; i < data[1].length; i++) {
+          axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${data[1][i]}`)
+            .then(pic => {
+              data[0].recProducts[i].picture = pic.data.imageUrls[0];
+            });
+        }
+
+        return data[0]
+      })
+      .then(data => {
+        console.log(data)
         this.setState({
-          productsData: serverData.data
-        });
-      }
-    );
+          productsData: data
+        })
+      })
   }
 
   getProduct(idx) {
     return this.state.productsData.recProducts === undefined
-      ? ''
+      ? ""
       : this.state.productsData.recProducts[idx];
   }
 
