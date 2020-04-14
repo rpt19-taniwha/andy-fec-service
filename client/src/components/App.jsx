@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Product from './Product';
+import "@babel/polyfill";
 
 class App extends React.Component {
   constructor(props) {
@@ -11,46 +12,42 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const productNum = document.location.pathname.split('/')[2];
+    let data = await this.getProductData(productNum);
 
-    this.getProductData(productNum)
-      .then(product => {
-        this.setState({
-          productsData: product.data
-        })
-
-        const productNums = product.data.recProducts.map((product => product.productNumber));
-        return productNums
+    this.setState({
+      productsData: [],
+      images: []
+    }, () => {
+      this.setState({
+        productsData: data[0].data,
+        images: data[1]
       })
-      .then(productNums => {
-        return this.getImageData(productNums)
-      })
-      .then(imageUrls => {
-        this.setState({
-          images: imageUrls
-        })
-      })
-      .catch(err => {
-        console.log('error', err)
-      })
+    })
   }
 
-  getProductData = (productNum) => {
-    return axios.get(`http://ec2-18-144-87-34.us-west-1.compute.amazonaws.com:8081/products/${productNum}`)
-  }
+  getProductData = async (productNum) => {
+    const product = await axios.get(`http://ec2-18-144-87-34.us-west-1.compute.amazonaws.com:8081/products/${productNum}`)
+    const productNums = product.data.recProducts.map((product => product.productNumber));
 
-  getImageData = (productNums) => {
-    const imageUrls = [];
+    const image1 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[0]}`);
+    const image2 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[1]}`);
+    const image3 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[2]}`);
+    const image4 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[3]}`);
+    const image5 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[4]}`);
+    const image6 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[5]}`);
 
-    for (let num of productNums) {
-      axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${num}`)
-        .then(images => {
-          imageUrls.push(images.data.imageUrls[0]);
-        })
-    }
+    let imageUrls = [
+      image1.data.imageUrls[0],
+      image2.data.imageUrls[0],
+      image3.data.imageUrls[0],
+      image4.data.imageUrls[0],
+      image5.data.imageUrls[0],
+      image6.data.imageUrls[0]
+    ];
 
-    return imageUrls;
+    return [product, imageUrls]
   }
 
   getProduct = (idx) => {
@@ -61,7 +58,7 @@ class App extends React.Component {
 
   getImage = (idx) => {
     return this.state.images[idx] === undefined
-      ? ""
+      ? "https://media.giphy.com/media/swhRkVYLJDrCE/giphy.gif"
       : this.state.images[idx];
   }
 
