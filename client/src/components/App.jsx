@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 
   getProductData = async (productNum) => {
-    const product = await axios.get(`http://ec2-18-144-87-34.us-west-1.compute.amazonaws.com:8081/products/${productNum}`)
+    const product = await axios.get(`http://ec2-54-67-66-218.us-west-1.compute.amazonaws.com:8081/products/${productNum}`)
     const productNums = product.data.recProducts.map((product => product.productNumber));
 
     const image1 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[0]}`);
