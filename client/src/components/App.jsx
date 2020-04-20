@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   getProductData = async (productNum) => {
-    const product = await axios.get(localProductUrl + productNum);
+    const product = await axios.get(productUrl + productNum);
     console.log(product, 'line 36')
     const productNums = product.data.recProducts.map((product => product.productNumber));
 
