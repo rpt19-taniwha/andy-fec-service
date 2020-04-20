@@ -1,12 +1,12 @@
 const request = require('request');
 
-describe('Server endpoint /youmayalsolike', () => {
+describe('Server endpoint /products', () => {
   const requestMethodAndUrl = {
     method: 'GET',
-    url: 'http://127.0.0.1:8080/youmayalsolike/549504785'
+    url: 'http://127.0.0.1:8081/products/549504785'
   };
 
-  it('GET /youmayalsolike/:productNumber should return 200', (done) => {
+  it('GET /products/:productNumber should return 200', (done) => {
     request(requestMethodAndUrl, (err, response) => {
       console.log(response.statusCode);
       if (err) {
@@ -18,7 +18,7 @@ describe('Server endpoint /youmayalsolike', () => {
     });
   });
 
-  it('GET /youmayalsolike/:productNumber should return correct key/value pairs and data types', (done) => {
+  it('GET /products/:productNumber should return correct key/value pairs and data types', (done) => {
     request(requestMethodAndUrl, (err, response, body) => {
       if (err) {
         throw err;

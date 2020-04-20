@@ -33,6 +33,4 @@ app.get('/listing/:productNumber', (req, res) => {
   });
 });
 
-
-
 module.exports = app;
