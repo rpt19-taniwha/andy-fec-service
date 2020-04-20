@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import Enzyme from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
@@ -9,9 +10,10 @@ Enzyme.configure({
   disableLifecycleMethods: true
 });
 
-describe('Render App component', () => {
-  it('Should include 1 div with "Hello world!!!" text', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.text()).toBe('Hello world!!!');
-  });
+it('should render without crashing', () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<App></App>, div);
 });
+
+
+

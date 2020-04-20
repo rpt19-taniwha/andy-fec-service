@@ -3,6 +3,10 @@ import axios from 'axios';
 import Product from './Product';
 import "@babel/polyfill";
 
+const productUrl = `http://ec2-54-67-66-218.us-west-1.compute.amazonaws.com:8081/products/`;
+const localProductUrl = `http://localhost:8081/products/`;
+const imageUrl = `http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -28,15 +32,16 @@ class App extends React.Component {
   }
 
   getProductData = async (productNum) => {
-    const product = await axios.get(`http://ec2-54-67-66-218.us-west-1.compute.amazonaws.com:8081/products/${productNum}`)
+    const product = await axios.get(localProductUrl + productNum);
+    console.log(product, 'line 36')
     const productNums = product.data.recProducts.map((product => product.productNumber));
 
-    const image1 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[0]}`);
-    const image2 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[1]}`);
-    const image3 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[2]}`);
-    const image4 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[3]}`);
-    const image5 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[4]}`);
-    const image6 = await axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/${productNums[5]}`);
+    const image1 = await axios.get(imageUrl + productNums[0]);
+    const image2 = await axios.get(imageUrl + productNums[1]);
+    const image3 = await axios.get(imageUrl + productNums[2]);
+    const image4 = await axios.get(imageUrl + productNums[3]);
+    const image5 = await axios.get(imageUrl + productNums[4]);
+    const image6 = await axios.get(imageUrl + productNums[5]);
 
     let imageUrls = [
       image1.data.imageUrls[0],
