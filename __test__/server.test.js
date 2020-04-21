@@ -12,9 +12,10 @@ describe('Server endpoint /products', () => {
         throw err;
       } else {
         expect(response.statusCode).toEqual(200);
+        done();
       }
     });
-    done();
+
   });
 
   it('GET /products/:productNumber should return correct key/value pairs and data types', (done) => {
@@ -40,8 +41,10 @@ describe('Server endpoint /products', () => {
         expect(typeof data.catagory).toBe('string');
         expect(Array.isArray(data.metaData)).toBe(true);
         expect(Array.isArray(data.recProducts)).toBe(true);
+
+        done();
       }
     });
-    done();
+
   });
 });
