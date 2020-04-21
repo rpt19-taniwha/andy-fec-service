@@ -3,7 +3,7 @@ import axios from 'axios';
 import Product from './Product';
 import "@babel/polyfill";
 
-const productUrl = `http://ec2-18-144-132-123.us-west-1.compute.amazonaws.com:8081/products/`;
+const productUrl = `http://ec2-18-144-132-123.us-west-1.compute.amazonaws.com:8081/:8081/products/`;
 const localProductUrl = `http://localhost:8081/products/`;
 const imageUrl = `http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/`;
 
