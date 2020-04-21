@@ -25,10 +25,9 @@ describe('Database product keys', () => {
         expect(data).toHaveProperty('catagory');
         expect(data).toHaveProperty('metaData');
         expect(data).toHaveProperty('recProducts');
-
-        done();
       }
     });
+    done();
   });
   it('should return Product object with correct value data types', (done) => {
     Product.find({ productNumber: 549504785 }, (err, result) => {

@@ -10,9 +10,10 @@ Enzyme.configure({
   disableLifecycleMethods: true
 });
 
-it('should render without crashing', () => {
+it('should render without crashing', (done) => {
   const div = document.createElement("div");
   ReactDOM.render(<App></App>, div);
+  done();
 });
 
 
