@@ -8,7 +8,7 @@
     "build": "webpack --watch --hot",
     "server-dev": "nodemon server/server.js",
     "seed": "node server/database-mongo/data/seedData.js",
-    "test": "jest --runInBand --detectOpenHandles --verbose --forceExit",
+    "test": "npm start & jest --runInBand --detectOpenHandles --verbose --forceExit",
     "start": "concurrently --kill-others \"npm run server-dev\" \"npm run build\""
   },
   "repository": {
