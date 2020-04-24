@@ -3,7 +3,7 @@ const request = require('request');
 describe('Server endpoint /products', () => {
   const requestMethodAndUrl = {
     method: 'GET',
-    url: 'http://localhost:8081/products/549504785'
+    url: 'http://ec2-18-144-132-123.us-west-1.compute.amazonaws.com:8081/products/549504785'
   };
 
   it('GET /products/:productNumber should return 200', (done) => {
