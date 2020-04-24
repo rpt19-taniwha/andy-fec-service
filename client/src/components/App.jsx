@@ -3,7 +3,7 @@ import axios from 'axios';
 import Product from './Product';
 import "@babel/polyfill";
 
-const productUrl = `http://ec2-18-144-132-123.us-west-1.compute.amazonaws.com:8081/products/`;
+const productUrl = `http://ec2-184-169-255-163.us-west-1.compute.amazonaws.com:8081/products/`;
 const localProductUrl = `http://localhost:8081/products/`;
 const imageUrl = `http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/product/`;
 
@@ -33,7 +33,6 @@ class App extends React.Component {
 
   getProductData = async (productNum) => {
     const product = await axios.get(productUrl + productNum);
-    console.log(product, 'line 36')
     const productNums = product.data.recProducts.map((product => product.productNumber));
 
     const image1 = await axios.get(imageUrl + productNums[0]);
