@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Product = require('../server/models/Product');
 
 // eslint-disable-next-line node/no-unpublished-require
-const dbUrl = require('../server/database-mongo/config/database.config');
+const dbUrl = 'mongodb+srv://root:root@recservicedata-3vond.mongodb.net/recProducts?retryWrites=true&w=majority';
 
 mongoose.connect(dbUrl, {
   useUnifiedTopology: true,
@@ -25,9 +25,11 @@ describe('Database product keys', () => {
         expect(data).toHaveProperty('catagory');
         expect(data).toHaveProperty('metaData');
         expect(data).toHaveProperty('recProducts');
+
+        done();
       }
     });
-    done();
+
   });
   it('should return Product object with correct value data types', (done) => {
     Product.find({ productNumber: 549504785 }, (err, result) => {

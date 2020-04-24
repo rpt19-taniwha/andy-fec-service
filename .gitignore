@@ -1,2 +1,2 @@
 node_modules/
-/database-mongo/
+/database.config.js

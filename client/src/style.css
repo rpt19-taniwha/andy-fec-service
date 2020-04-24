@@ -13,6 +13,8 @@ Products
   margin-bottom: 20px;
 }
 
+
+
 #youmayalsolike .wrapper {
   display: flex;
   justify-content: center;
@@ -40,6 +42,7 @@ Products
   font-size: 13px;
   margin-left: 10px;
   margin-top: 1px;
+  cursor: pointer;
 }
 
 #youmayalsolike .arrow:hover {
@@ -76,6 +79,7 @@ Card
   border-radius: 0px;
   transition: all .25s;
   box-shadow: none;
+  cursor: pointer;
 }
 
 #youmayalsolike .cards:hover {
