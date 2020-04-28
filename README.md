@@ -19,15 +19,17 @@
 
 ## Usage
 
-> Service URL is "http://{HOSTNAME}:8081/listing/{productId}". This will render service components.
->
-> API URL is "http://{HOSTNAME}:8081/products/{productId}". This will send JSON data for service components.
+- Service URL is "http://{HOSTNAME}:8081/listing/{productId}". This will render service components.
+- API URL is "http://{HOSTNAME}:8081/products/{productId}". This will send JSON data for service components.
 
 ## Installation/Setup
 
-> Create mongoDB Atlas account with "read" and "read/write" db urls.
-> Add read/write URL to "/server/database-mongo/config/database.config.js"
-> Add read URL to "/server/server.js"
+- Create mongoDB Atlas account (Mongodb.com)
+- Setup new cluster and connect
+- Go to "Database Access" under "Security" in MongoDb Atlas main dashboard.
+- Create "read" and "read/write" db urls.
+- Add read/write URL to "/server/database-mongo/config/database.config.js"
+- Add read URL to "/server/server.js"
 
 ## Start
 
