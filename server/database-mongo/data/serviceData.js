@@ -52,7 +52,7 @@ const addRecs = (productNumber) => {
     serviceProduct.productNumber = product.productNumber;
     serviceProduct.productName = product.productName;
     serviceProduct.price = `$${faker.commerce.price()}`;
-    serviceProduct.picture = `https://i.picsum.photos/id/${i}/220/165.jpg`
+    serviceProduct.picture = `https://i.picsum.photos/id/${i}/220/165.jpg`;
     serviceProduct.sellerName = faker.internet.userName();
     serviceProduct.shipping = faker.random.boolean();
     serviceProduct.catagory = product.productCategory;
@@ -67,5 +67,4 @@ const addRecs = (productNumber) => {
   return null;
 })();
 
-console.log(serviceProducts);
 module.exports = serviceProducts;
