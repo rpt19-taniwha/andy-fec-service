@@ -25,9 +25,9 @@
 
 ## Installation/Setup
 
-> Create mongoDB Atlas account and "read" and "read/write" urls.
-> Add read/write URL to "./database-mongo/config/database.config.js"
-> Add read URL to "./server/server.js"
+> Create mongoDB Atlas account with "read" and "read/write" db urls.
+> Add read/write URL to "/server/database-mongo/config/database.config.js"
+> Add read URL to "/server/server.js"
 
 ## Start
 
